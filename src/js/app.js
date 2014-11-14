@@ -16,6 +16,11 @@ oclockApp.config(['$routeProvider', '$locationProvider', function ($routeProvide
           controller: 'AcceuilController',
           controllerAs: 'AcceuilController'
         })
+        .when('/options', {
+          templateUrl: 'partials/options.html',
+          controller: 'OptionsController',
+          controllerAs: 'OptionsController'
+        })
         .otherwise({
         redirect: '/'
     });
@@ -46,12 +51,19 @@ oclockApp.controller('OclockController',['$scope', '$rootScope', function ($scop
   };
 }]);
 oclockApp.controller('AcceuilController',['$scope', '$rootScope', function ($scope, $rootScope) {
-  $rootScope.clock = {
+  if (angular.isDefined($rootScope.clock)) {
+    // variable is defined
+    $scope.clock = $rootScope.clock;
+  };
+}]);
+oclockApp.controller('OptionsController',['$scope', '$rootScope', function ($scope, $rootScope) {
+    $rootScope.clock = {
     adresse: "clock1",
     heure: "",
     minutes: ""
   };
-}]);
-oclockApp.controller('OptionController',['$scope', function ($scope) {
-
+  $scope.changeClock = function (name){
+    $rootScope.clock.adresse = name;
+    console.log($rootScope.clock.adresse);
+  };
 }]);
