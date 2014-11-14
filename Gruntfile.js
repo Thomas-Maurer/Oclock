@@ -10,15 +10,6 @@ module.exports = function (grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    bootstrap: {
-        dest: 'src',
-        js: [
-            'bootstrap-modal.js'
-        ],
-        css: [
-            'modals.less'
-        ]
-    },
     uglify: {
       dist: {
         files: {
@@ -28,7 +19,7 @@ module.exports = function (grunt) {
     },
       concat: {
         dist: {
-          src: ['bower_components/jquery/dist/jquery.js','bower_components/angularjs/angular.js','bower_components/kineticjs/kinetic.js', 'bower_components/underscore/underscore-min.js', 'bower_components/bootstrap/dist/js/bootstrap.js', 'src/js/*.js'],
+          src: ['bower_components/jquery/dist/jquery.js','bower_components/angularjs/angular.js','node_modules/angular-route/angular-route.js','node_modules/angular-animate/angular-animate.js','bower_components/kineticjs/kinetic.js', 'bower_components/underscore/underscore-min.js', 'bower_components/bootstrap/dist/js/bootstrap.js', 'src/js/*.js'],
           dest: 'build/js/vendor.js'
         }
       },
@@ -38,7 +29,7 @@ module.exports = function (grunt) {
           livereload: true, // Activons le livereload du navigateur
         },
         src: {
-          files: ['src/js/*.js', 'src/css/*.css', 'build/*.html'], // Les fichiers à observer…
+          files: ['src/js/*.js', 'src/css/*.css', 'build/*.html', 'build/partials/*.html'], // Les fichiers à observer…
           tasks: ['default'], // … la commande à effectuer
         }
       },

@@ -1,7 +1,25 @@
-var oclockApp = angular.module('oclockApp', []);
-oclockApp.controller('OclockController', function ($scope) {
+var oclockApp = angular.module('oclockApp', ['ngRoute','ngAnimate']);
+oclockApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+  $routeProvider
+        .when('/game', {
+          templateUrl: 'partials/game.html',
+          controller: 'OclockController',
+          controllerAs: 'OclockController'
+        })
+        .when('/', {
+          templateUrl: 'partials/home.html',
+          controller: 'AcceuilController',
+          controllerAs: 'AcceuilController'
+        })
+        .otherwise({
+        redirect: '/'
+    });
+
+      $locationProvider.html5Mode(true);
+}]);
+oclockApp.controller('OclockController',['$scope', function ($scope) {
   'use strict';
-  var clock = {
+  $scope.clock = {
     adresse: "clock1",
     heure: "",
     minutes: ""
@@ -14,18 +32,21 @@ oclockApp.controller('OclockController', function ($scope) {
   var layer = new Kinetic.Layer();
   stage.add(layer);
   var img = new Image();
-  img.src = 'css/asset/' + clock.adresse + '.png';
+  img.src = 'css/asset/' + $scope.clock.adresse + '.png';
   img.onload = function () {
-      clock = new Kinetic.Image({
-        x: 0,
-        y: 0,
-        width: 251,
-        height: 231,
-        image: img
+      var imgclock = new Kinetic.Image({
+        width: 250,
+        height: 250,
+        image: img,
+        draggable: true
       });
-
    // add the shape to the layer
-    layer.add(clock);
+    layer.add(imgclock);
     layer.draw();
   };
-});
+}]);
+oclockApp.controller('AcceuilController',['$scope', function ($scope) {
+  $scope.launchGame = function () {
+    console.log('test click');
+  };
+}]);

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+  <base href="/Oclock/build/"></base>
   	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="css/style.css">
   	<script src="js/vendor.js"></script>
@@ -9,9 +10,9 @@
     <title>Oclock</title>
     <meta name="description" content="">
   </head>
-<body ng-app="oclockApp" class ="container">
-	<div ng-controller="OclockController" id ="game" class="panel default row">
-
-</div>
+<body ng-app="oclockApp" class="container">
+  <div ng-view class="view-animate">
+    
+  </div>
 </body>
 </html>
