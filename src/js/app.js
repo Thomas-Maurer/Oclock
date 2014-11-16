@@ -39,13 +39,47 @@ oclockApp.controller('OclockController',['$scope', function ($scope) {
   img.src = 'css/asset/' + $scope.clock.adresse + '.png';
   img.onload = function () {
       var imgclock = new Kinetic.Image({
-        width: 250,
-        height: 250,
+        width: 440,
+        height: 456,
         image: img,
         draggable: true
       });
    // add the shape to the layer
     layer.add(imgclock);
+    layer.draw();
+  };
+    var firstHand = new Image();
+    firstHand.src = 'css/asset/firstHand.png';
+    firstHand.onload = function () {
+    var minutes = 45;
+    var firstHandclock = new Kinetic.Image({
+        x: 219,
+        y: 228,
+        width: 6,
+        height: 120,
+        image: firstHand
+      });
+    var angle = minutes * 360 / 60;
+    firstHandclock.rotate(angle);
+    console.log(angle);
+    // add the shape to the layer
+    layer.add(firstHandclock);
+    layer.draw();
+  };
+  var secondHand = new Image();
+    secondHand.src = 'css/asset/secondHand.png';
+    secondHand.onload = function () {
+    var heures = 22;
+    var secondHandclock = new Kinetic.Image({
+        x: 219,
+        y: 228,
+        width: 6,
+        height: 80,
+        image: secondHand
+      });
+    secondHandclock.rotate((Math.PI * 2)*(((heures % 12) / 12) + (( 1 / 12) * 18 / 60)));
+    // add the shape to the layer
+    layer.add(secondHandclock);
     layer.draw();
   };
 }]);
