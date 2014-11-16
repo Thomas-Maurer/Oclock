@@ -51,7 +51,7 @@ oclockApp.controller('OclockController',['$scope', function ($scope) {
     var firstHand = new Image();
     firstHand.src = 'css/asset/firstHand.png';
     firstHand.onload = function () {
-    var minutes = 45;
+    var minutes = 10;
     var firstHandclock = new Kinetic.Image({
         x: 219,
         y: 228,
@@ -59,9 +59,11 @@ oclockApp.controller('OclockController',['$scope', function ($scope) {
         height: 120,
         image: firstHand
       });
+    //Flip l'aiguille pour la mettre au bon endroit
+    firstHandclock.setScale({y:-1});
     var angle = minutes * 360 / 60;
-    firstHandclock.rotate(angle);
-    console.log(angle);
+    firstHandclock.rotate(angle%360);
+    console.log(-angle);
     // add the shape to the layer
     layer.add(firstHandclock);
     layer.draw();
@@ -77,7 +79,8 @@ oclockApp.controller('OclockController',['$scope', function ($scope) {
         height: 80,
         image: secondHand
       });
-    secondHandclock.rotate((Math.PI * 2)*(((heures % 12) / 12) + (( 1 / 12) * 18 / 60)));
+    secondHandclock.setScale({y:-1});
+    secondHandclock.rotate((heures%12)* 360 / 12);
     // add the shape to the layer
     layer.add(secondHandclock);
     layer.draw();
