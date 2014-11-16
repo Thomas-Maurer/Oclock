@@ -28,7 +28,8 @@ oclockApp.config(['$routeProvider', '$locationProvider', function ($routeProvide
 }]);
 oclockApp.controller('OclockController',['$scope','$rootScope', function ($scope, $rootScope) {
   'use strict';
-
+  $scope.clientHeure ='';
+  $scope.clientMin ='';
   $rootScope.clock.init();
   
 }]);

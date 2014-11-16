@@ -4,3 +4,7 @@ body {
 #game{
 	background: transparent;
 };
+#choix{
+	background: url(asset/span.png);
+	background: no-repeat;
+};

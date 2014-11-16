@@ -13,8 +13,8 @@ var Clock = function(){
     //init stage
     stage = new Kinetic.Stage({
       container: 'game',
-      width: 800,
-      height: 800,
+      width: 400,
+      height: 400,
       });
     //init layers
     layerClock = new Kinetic.Layer();
@@ -25,8 +25,8 @@ var Clock = function(){
     };
     imageClock.onload = function () {
         var imgclock = new Kinetic.Image({
-          width: 440,
-          height: 456,
+          width: 220,
+          height: 228,
           image: imageClock,
           draggable: false
         });
@@ -40,10 +40,10 @@ var Clock = function(){
       minutes = 10;
       var angle = minutes * 360 / 60;
       var firstHandclock = new Kinetic.Image({
-          x: 219,
-          y: 228,
-          width: 6,
-          height: 120,
+          x: 109,
+          y: 114,
+          width: 3,
+          height: 80,
           image: imageMinute
         });
       //Flip l'aiguille pour la mettre au bon endroit
@@ -57,10 +57,10 @@ var Clock = function(){
       imageHour.onload = function () {
       heures = 22;
       var secondHandclock = new Kinetic.Image({
-          x: 219,
-          y: 228,
-          width: 6,
-          height: 80,
+          x: 109,
+          y: 114,
+          width: 3,
+          height: 40,
           image: imageHour
         });
       secondHandclock.setScale({y:-1});

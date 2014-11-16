@@ -4,6 +4,28 @@
         <section id="game">
           
         </section>
+       	<div class="row">
+       		<table style="width:100%">
+			  <tr>
+			    <th></th>
+			    <th></th> 
+			    <th></th>
+			    <th></th>
+			  </tr>
+			  <tr>
+			    <td>
+			    	<img ng-click="addHour()" src="css/asset/button_up.png"></img>
+       				<img ng-click="sousHour()" src="css/asset/button_down.png"></img>
+       			</td>
+			    <td class="choix"><input type="text" ng-model="clientHeure"></input></td>
+			    <td class="choix"><input type="text" ng-model="clientMin"></input></td> 
+			    <td>
+			    	<img ng-click="addMin()" src="css/asset/button_up.png"></img>
+			    	<img ng-click="sousMin()" src="css/asset/button_down.png"></img>
+			    </td>
+			  </tr>
+			</table>
+    	</div>
       </div>
     </div>
   </div>
