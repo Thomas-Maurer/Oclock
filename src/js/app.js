@@ -24,10 +24,9 @@ oclockApp.config(['$routeProvider', '$locationProvider', function ($routeProvide
         .otherwise({
         redirect: '/'
     });
-
-      $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true);
 }]);
-oclockApp.controller('OclockController',['$scope', '$rootScope', function ($scope, $rootScope) {
+oclockApp.controller('OclockController',['$scope', function ($scope) {
   'use strict';
   var stage = new Kinetic.Stage({
     container: 'game',
@@ -37,7 +36,7 @@ oclockApp.controller('OclockController',['$scope', '$rootScope', function ($scop
   var layer = new Kinetic.Layer();
   stage.add(layer);
   var img = new Image();
-  img.src = 'css/asset/' + $rootScope.clock.adresse + '.png';
+  img.src = 'css/asset/' + $scope.clock.adresse + '.png';
   img.onload = function () {
       var imgclock = new Kinetic.Image({
         width: 250,
@@ -64,6 +63,5 @@ oclockApp.controller('OptionsController',['$scope', '$rootScope', function ($sco
   };
   $scope.changeClock = function (name){
     $rootScope.clock.adresse = name;
-    console.log($rootScope.clock.adresse);
   };
 }]);
