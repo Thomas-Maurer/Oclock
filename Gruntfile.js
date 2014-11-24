@@ -41,7 +41,7 @@ module.exports = function (grunt) {
       // Task-specific options go here.
     },
     all: {
-      src: ["bower_components/bootstrap/dist/css/*.css", "src/css/*.css", 'bower_components/ngDialog/css/ngDialog.css'],
+      src: ["bower_components/bootstrap/dist/css/*.css",'bower_components/ngDialog/css/ngDialog.css', "src/css/*.css"],
       dest: "build/css/style.css"
     },
   },

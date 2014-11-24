@@ -1,5 +1,6 @@
 var Clock = function(){
   var stage;
+  var state;
   var layerClock;
   var adresse='';
   var heures;
@@ -59,6 +60,13 @@ var Clock = function(){
       imageHour.src = 'css/asset/secondHand.png';
       imageHour.onload = function () {
       heures = Math.floor((Math.random() * 23));
+      if (heures > 12){
+        state = "Après-midi";
+      }else{
+        state = "Matin";
+      }
+      console.log(heures);
+      console.log(state);
       var secondHandclock = new Kinetic.Image({
           x: 109,
           y: 114,
@@ -87,12 +95,7 @@ var Clock = function(){
       return heures;
     };
     this.getState = function (){
-      if (heures > 12)
-      {
-        return 'Après-midi';
-      }else {
-        return 'Matin';
-      }
+      return state;
     };
 
   this.checkClock = function (hour, min) {

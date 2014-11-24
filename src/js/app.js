@@ -73,7 +73,6 @@ oclockApp.controller('OclockController',['$scope','$rootScope', 'ngDialog', func
       ngDialog.open({ template: 'partials/popuploose.html' });
     }
   };
-  console.log($scope.clock.getHeures());
 
 }]);
 oclockApp.controller('AcceuilController',['$scope', '$rootScope', function ($scope, $rootScope) {
