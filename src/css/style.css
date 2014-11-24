@@ -2,9 +2,9 @@ body {
 	background: url(asset/background.png);
 };
 #game{
-	background: transparent;
+	
 };
-#choix{
-	background: url(asset/span.png);
-	background: no-repeat;
-};
+#span{
+      background: url(asset/span.png);
+      width: 50px;
+}

@@ -13,31 +13,34 @@ var Clock = function(){
     //init stage
     stage = new Kinetic.Stage({
       container: 'game',
-      width: 400,
-      height: 400,
+      width: 250,
+      height: 250,
       });
+
     //init layers
     layerClock = new Kinetic.Layer();
     if (adresse === ''){
-      imageClock.src = 'css/asset/clock1.png';
-    }else {
-      imageClock.src = adresse;
+      adresse = 'css/asset/clock1.png';
     }
+
+    imageClock.src = adresse;
     imageClock.onload = function () {
         var imgclock = new Kinetic.Image({
           width: 220,
           height: 228,
           image: imageClock,
-          draggable: false
+          draggable: true
         });
+
      // add the shape to the layer
       layerClock.add(imgclock);
       layerClock.draw();
     };
+
     //Init Minutes
     imageMinute.src = 'css/asset/firstHand.png';
     imageMinute.onload = function () {
-      minutes = 30;
+      minutes = Math.floor((Math.random() * 11)) * 5;
       var angle = minutes * 360 / 60;
       var firstHandclock = new Kinetic.Image({
           x: 109,
@@ -55,7 +58,7 @@ var Clock = function(){
     };
       imageHour.src = 'css/asset/secondHand.png';
       imageHour.onload = function () {
-      heures = 20;
+      heures = Math.floor((Math.random() * 23));
       var secondHandclock = new Kinetic.Image({
           x: 109,
           y: 114,
@@ -63,6 +66,7 @@ var Clock = function(){
           height: 40,
           image: imageHour
         });
+      //Flip l'aiguille pour la mettre au bon endroit
       secondHandclock.setScale({y:-1});
       secondHandclock.rotate((heures%12)* 360 / 12);
       // add the shape to the layer
@@ -74,9 +78,24 @@ var Clock = function(){
   };
 
   this.changeClock = function (name){
-      adresse = 'css/asset/'+ name +'.png';
+      imageClock.src = 'css/asset/'+ name +'.png';
     };
   this.getSrc = function (){
       return adresse;
     };
+  this.getHeures = function (){
+      return heures;
+    };
+    this.getState = function (){
+      if (heures > 12)
+      {
+        return 'Après-midi';
+      }else {
+        return 'Matin';
+      }
+    };
+
+  this.checkClock = function (hour, min) {
+    return (hour === heures && min === minutes);
+  };
 };

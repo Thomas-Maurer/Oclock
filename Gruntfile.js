@@ -19,7 +19,7 @@ module.exports = function (grunt) {
     },
       concat: {
         dist: {
-          src: ['bower_components/jquery/dist/jquery.js','bower_components/angularjs/angular.js','node_modules/angular-route/angular-route.js','node_modules/angular-animate/angular-animate.js','bower_components/kineticjs/kinetic.js', 'bower_components/underscore/underscore-min.js', 'bower_components/bootstrap/dist/js/bootstrap.js', 'src/js/*.js'],
+          src: ['bower_components/jquery/dist/jquery.js','bower_components/angularjs/angular.js','bower_components/ngDialog/js/ngDialog.js','node_modules/angular-route/angular-route.js','node_modules/angular-animate/angular-animate.js','bower_components/kineticjs/kinetic.js', 'bower_components/underscore/underscore-min.js', 'bower_components/bootstrap/dist/js/bootstrap.js', 'src/js/*.js'],
           dest: 'build/js/vendor.js'
         }
       },
@@ -41,7 +41,7 @@ module.exports = function (grunt) {
       // Task-specific options go here.
     },
     all: {
-      src: ["bower_components/bootstrap/dist/css/*.css", "src/css/*.css"],
+      src: ["bower_components/bootstrap/dist/css/*.css", "src/css/*.css", 'bower_components/ngDialog/css/ngDialog.css'],
       dest: "build/css/style.css"
     },
   },
