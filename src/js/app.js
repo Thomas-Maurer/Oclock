@@ -39,7 +39,7 @@ oclockApp.controller('AcceuilController',['$scope', '$rootScope', function ($sco
   }else{
     $rootScope.clock={};
     $rootScope.clock  = new Clock();
-  };
+  }
 
 }]);
 oclockApp.controller('OptionsController',['$scope', '$rootScope', function ($scope, $rootScope) {

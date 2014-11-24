@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         }
       },
       jshint: {
-    beforeconcat: ['src/js/<%= pkg.name %>.js']
+    beforeconcat: ['src/js/*.js']
   },
   concat_css: {
     options: {

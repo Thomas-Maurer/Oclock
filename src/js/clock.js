@@ -19,10 +19,10 @@ var Clock = function(){
     //init layers
     layerClock = new Kinetic.Layer();
     if (adresse === ''){
-      imageClock.src = 'css/asset/clock1.png'
+      imageClock.src = 'css/asset/clock1.png';
     }else {
       imageClock.src = adresse;
-    };
+    }
     imageClock.onload = function () {
         var imgclock = new Kinetic.Image({
           width: 220,
@@ -37,7 +37,7 @@ var Clock = function(){
     //Init Minutes
     imageMinute.src = 'css/asset/firstHand.png';
     imageMinute.onload = function () {
-      minutes = 10;
+      minutes = 30;
       var angle = minutes * 360 / 60;
       var firstHandclock = new Kinetic.Image({
           x: 109,
@@ -55,7 +55,7 @@ var Clock = function(){
     };
       imageHour.src = 'css/asset/secondHand.png';
       imageHour.onload = function () {
-      heures = 22;
+      heures = 20;
       var secondHandclock = new Kinetic.Image({
           x: 109,
           y: 114,
