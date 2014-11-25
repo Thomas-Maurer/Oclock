@@ -69,13 +69,34 @@ oclockApp.controller('OclockController',['$scope','$rootScope', 'ngDialog', func
   $scope.check = function () {
     if($scope.clock.checkClock($scope.clientHeure, $scope.clientMin)){
       ngDialog.open({
+        preCloseCallback: function (id) {
+                                          if (id === 0){
+                                            $scope.location.path("/");
+                                          }else{
+                                            $scope.clock.changeTime();
+                                        }
+                                          $scope.state = $scope.clock.getState();
+                                        
+                                        },
         template: 'partials/popupwin.html',
         scope: $scope,
      });
     }else{
-      ngDialog.open({ template: 'partials/popuploose.html',scope: $scope});
+      ngDialog.open({preCloseCallback: function (id) {
+                                          if (id === 0){
+                                            $scope.location.path("/");
+                                          }else{
+                                            $scope.clock.changeTime();
+
+                                        }
+                                          $scope.state = $scope.clock.getState();
+                                        },
+      template: 'partials/popuploose.html',
+      scope: $scope
+    });
     }
   };
+
 
 }]);
 oclockApp.controller('AcceuilController',['$scope', '$rootScope', function ($scope, $rootScope) {

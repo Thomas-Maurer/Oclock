@@ -41,7 +41,7 @@ var Clock = function(){
     });
     layerHour = new Kinetic.Layer({
       x:0,
-      y:-1,
+      y:0,
       width:6,
       height:55
     });
@@ -132,8 +132,10 @@ var Clock = function(){
       }else{
         state = "Matin";
       }
-      layerHour.rotation(heures);
-      layerMinutes.rotation(minutes);
+      layerHour.rotation((heures%12)* 360 / 12);
+      layerHour.draw();
+      layerMinutes.rotation(minutes * 360 / 60);
+      layerMinutes.draw();
   };
   this.checkClock = function (hour, min) {
     return (hour === heures && min === minutes);

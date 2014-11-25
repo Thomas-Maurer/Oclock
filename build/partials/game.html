@@ -10,7 +10,7 @@
 			  <tr>
 			    <th></th>
 			    <th></th> 
-			    <th ng-model="state">{{state}}</th>
+			    <th ng-bind="state">{{state}}</th>
 			    <th></th>
 			  </tr>
 			  <tr>
@@ -18,9 +18,9 @@
 			    	<img ng-click="addHour()" src="css/asset/button_up.png" ></img>
        				<img ng-click="sousHour()" src="css/asset/button_down.png"></img>
        			</td>
-			    <td ><span id="span" ng-model="clientHeure">{{clientHeure}}</span></td>
+			    <td ><span id="span" ng-bind="clientHeure">{{clientHeure}}</span></td>
 			    <td> <span>H</span></td>
-			    <td ><span id="span" type="text" ng-model="clientMin">{{clientMin}}</span></td> 
+			    <td ><span id="span" type="text" ng-bind="clientMin">{{clientMin}}</span></td> 
 			    <td>
 			    	<img ng-click="addMin()" src="css/asset/button_up.png" ></img>
 			    	<img ng-click="sousMin()" src="css/asset/button_down.png"></img>
