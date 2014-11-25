@@ -28,10 +28,10 @@ oclockApp.config(['$routeProvider', '$locationProvider', function ($routeProvide
 }]);
 oclockApp.controller('OclockController',['$scope','$rootScope', 'ngDialog', function ($scope, $rootScope, ngDialog) {
   'use strict';
+  $rootScope.clock.initStage();
   $scope.clientHeure =0;
   $scope.clientMin =0;
   $scope.clock = $rootScope.clock;
-  $scope.clock.init();
   $scope.state = $scope.clock.getState();
 
   $scope.addHour = function (){
@@ -68,17 +68,20 @@ oclockApp.controller('OclockController',['$scope','$rootScope', 'ngDialog', func
 
   $scope.check = function () {
     if($scope.clock.checkClock($scope.clientHeure, $scope.clientMin)){
-      ngDialog.open({ template: 'partials/popupwin.html' });
+      ngDialog.open({
+        template: 'partials/popupwin.html',
+        scope: $scope,
+     });
     }else{
-      ngDialog.open({ template: 'partials/popuploose.html' });
+      ngDialog.open({ template: 'partials/popuploose.html',scope: $scope});
     }
   };
 
 }]);
 oclockApp.controller('AcceuilController',['$scope', '$rootScope', function ($scope, $rootScope) {
 
-    $rootScope.clock  = new Clock();
-  
+  $rootScope.clock  = new Clock();
+  $rootScope.clock.init();    
 }]);
 
 oclockApp.controller('OptionsController',['$scope', '$rootScope', function ($scope, $rootScope) {

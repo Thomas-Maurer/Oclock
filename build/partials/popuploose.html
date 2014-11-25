@@ -1,1 +1,10 @@
-You loose
+<div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                <img class="img-responsive" src="css/asset/fail.png" alt="Raté !">
+                <p>L'heure exacte était : {{clock.getHeures()}} h {{clock.getMinutes()}}</p>
+                </div>
+                <div class="ngdialog-buttons row">
+                    <img ng-click="closeThisDialog(0)" class="img-responsive" src="css/asset/button_menu.png" alt="Menu">
+                    <img ng-click="closeThisDialog(1)" class="img-responsive" src="css/asset/button_replay.png" alt="Rejouer">
+                </div>
+                </div>

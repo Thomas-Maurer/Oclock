@@ -2,6 +2,8 @@ var Clock = function(){
   var stage;
   var state;
   var layerClock;
+  var layerHour;
+  var layerMinutes;
   var adresse='';
   var heures;
   var minutes;
@@ -10,16 +12,39 @@ var Clock = function(){
   var imageMinute = new Image();
 
 
-  this.init = function () {
-    //init stage
+  this.initStage = function () {
+     //init stage
     stage = new Kinetic.Stage({
       container: 'game',
       width: 250,
       height: 250,
       });
+    stage.add(layerClock, layerMinutes, layerHour);
+    layerClock.draw();
 
+  };
+
+  this.init = function () {
+   
     //init layers
-    layerClock = new Kinetic.Layer();
+    layerClock = new Kinetic.Layer({
+      x:0,
+      y:0,
+      width:300,
+      height:300
+    });
+    layerMinutes = new Kinetic.Layer({
+      x:0,
+      y:-2,
+      width:6,
+      height:75
+    });
+    layerHour = new Kinetic.Layer({
+      x:0,
+      y:-1,
+      width:6,
+      height:55
+    });
     if (adresse === ''){
       adresse = 'css/asset/clock1.png';
     }
@@ -29,8 +54,7 @@ var Clock = function(){
         var imgclock = new Kinetic.Image({
           width: 220,
           height: 228,
-          image: imageClock,
-          draggable: true
+          image: imageClock
         });
 
      // add the shape to the layer
@@ -54,8 +78,8 @@ var Clock = function(){
       firstHandclock.setScale({y:-1});
       firstHandclock.rotate(angle%360);
       // add the shape to the layer
-      layerClock.add(firstHandclock);
-      layerClock.draw();
+      layerMinutes.add(firstHandclock);
+      layerMinutes.draw();
     };
       imageHour.src = 'css/asset/secondHand.png';
       imageHour.onload = function () {
@@ -78,11 +102,10 @@ var Clock = function(){
       secondHandclock.setScale({y:-1});
       secondHandclock.rotate((heures%12)* 360 / 12);
       // add the shape to the layer
-      layerClock.add(secondHandclock);
-      layerClock.draw();
+      layerHour.add(secondHandclock);
+      layerHour.draw();
     };
-    stage.add(layerClock);
-    layerClock.draw();
+
   };
 
   this.changeClock = function (name){
@@ -94,10 +117,24 @@ var Clock = function(){
   this.getHeures = function (){
       return heures;
     };
+  this.getMinutes = function (){
+      return minutes;
+    };
     this.getState = function (){
       return state;
     };
 
+  this.changeTime = function () {
+      heures = Math.floor((Math.random() * 23));
+      minutes = Math.floor((Math.random() * 11)) * 5;
+      if (heures > 12){
+        state = "Après-midi";
+      }else{
+        state = "Matin";
+      }
+      layerHour.rotation(heures);
+      layerMinutes.rotation(minutes);
+  };
   this.checkClock = function (hour, min) {
     return (hour === heures && min === minutes);
   };
